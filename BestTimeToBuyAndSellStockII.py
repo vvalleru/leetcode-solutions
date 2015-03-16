@@ -3,7 +3,7 @@ class Solution:
     # @return an integer
     def maxProfit(self, prices):
         N = len(prices)
-        possibleProfits = [0]
+
         if N < 2:
             return 0
 
@@ -19,13 +19,6 @@ class Solution:
             while end + 1 < N and prices[end + 1] > prices[end]:
                 end += 1
 
-            possibleProfits.append(prices[end] - prices[start])
+            result += prices[end] - prices[start]
             start = end + 1
-
-        if len(possibleProfits) > 2:
-            possibleProfits.sort()
-            result = possibleProfits[-1] + possibleProfits[-2]
-        else:
-            result = sum(possibleProfits)
-
         return result
